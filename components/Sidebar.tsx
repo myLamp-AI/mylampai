@@ -38,7 +38,7 @@ const Sidebar = () => {
                 height={20}
                 priority
               />
-              Explore
+              Sudharm
             </Link>
             <a
               href="#"
