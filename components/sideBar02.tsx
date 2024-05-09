@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 
-export default function SideBar(){
+export default function SideBar02(){
     const [open, setOpen]= useState<boolean>(false);
     console.log(open);
     const dropHandle=(state:boolean)=>{
@@ -19,7 +19,7 @@ export default function SideBar(){
      <div className="flex absolute inset-x-0 h-24 mt-2 mr-3 ml-2 mb-0 rounded-lg bottom-0 bg-white ...">
         <div className="bg-[#8C52FF] w-1/3 rounded-lg ... ">
         <div className="rounded-full h-16 w-16 flex items-center justify-center bg-white mt-4 ml-5"><Image
-          src="/Vector-2.svg"
+          src="/Vector-3.svg"
           alt="Verceldcjncn Logo"
           className="dark:invert"
            width={45}
@@ -51,7 +51,7 @@ export default function SideBar(){
      </div>
      <div className="absolute inset-x-0 top-28 h-24 mt-2 mr-3 ml-2 mb-0 h-30 bg-[#f1f0f4] rounded-lg ...">
      <div className="rounded-full h-14 w-14 flex items-center justify-center  mt-6 ml-2"><Image
-          src="/robot.svg"
+          src="/robot-2.svg"
           alt="Verceldcjncn Logo"
           className="dark:invert"
            width={55}
