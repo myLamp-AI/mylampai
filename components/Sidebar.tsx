@@ -1,5 +1,4 @@
 import React from "react";
-import { Progress } from "@material-tailwind/react";
 import "animate.css";
 import Link from "next/link";
 import Image from "next/image";
