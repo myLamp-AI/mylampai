@@ -5,6 +5,7 @@ import { useState } from "react";
 import ComponentB from "./Assessment";
 
 
+
 export default function SideBar(){
      const [isOpen1, setIsOpen1] = useState(false);
      const toggleDropdown1 = () => {
@@ -43,9 +44,6 @@ export default function SideBar(){
         <div className="w-2/5 bg-white rounded-lg ..."> <div className="h-fit absolute  right-50 top-6 ">
       <div>
         <span className="text-left  text-black font-bold text-decoration-line: underline font-size: 0.75rem ...">Capstone Project</span>
-        </div>
-        <div>
-        <span className=" text-left text-black font-bold">Tech 101: Starting in Tech</span>
         </div>
         </div></div>
      </div>  
@@ -108,31 +106,55 @@ export default function SideBar(){
      </div>
      <div className="flex justify-between absolute inset-x-0 top-56 h-12 mt-2 mr-3 ml-2 mb-0 h-30 rounded-lg ...">
         <div className="bg-white text-[15px] mt-2 mr-4 h-8 w-24 inset-y-0 text-centerw-16 rounded-lg ...">
-          <div className="flex">
+          <div className="flex relative">
             <div>
              <Image
              src="/insights.svg"
              alt="Verceldcjncn Logo"
              className="dark:invert"
-             width={25}
-             height={25}
+             width={30}
+             height={30}
             />
             </div>
             <div>
-            <span className="text-[10px]">insights</span>
+            <span className="text-[13px] absolute top-1.5">insights</span>
             </div>
             </div>
             </div>
-        <div className="bg-white text-[15px] mt-2 mr-4 h-8 w-24 inset-y-0 text-centerw-16 rounded-lg ...">insights</div>
-        <div className="bg-white mt-2 mr-10 h-8 inset-y-0 left-0 w-16 text-sm  ...">logo</div>
+        <div className="bg-white text-[15px] mt-2 mr-4 h-8 w-24 inset-y-0 text-centerw-16 rounded-lg ...">
+        <div className="flex relative">
+            <div>
+             <Image
+             src="/roadmap.svg"
+             alt="Verceldcjncn Logo"
+             className="dark:invert"
+             width={30}
+             height={30}
+            />
+            </div>
+            <div>
+            <span className="text-[13px] absolute top-1.5">Roadmap</span>
+            </div>
+            </div>
+            </div>
+            <div className="bg-[#E8E2F4] mt-2  h-8 inset-y-0 left-0 w-16 text-sm  ...">
+            <Image
+             src="/plus.svg"
+             alt="Verceldcjncn Logo"
+             className="dark:invert"
+             width={25}
+             height={25}
+            />
+
+            </div>
      </div>
       
-      <div className="h-96 mt-2 mr-0 ml-0 mb-0 h-30 rounded-lg ... ">
-      <div  className="h-28 mt-2 mr-3 ml-2  mb-0 h-30 relative bg-[#8C52FF] rounded-lg ...">
-      {isOpen1 && (
-     <div className="float absolute bg-white h-fit border mt-16 border-gray-300 w-full  ml-30 rounded-md shadow-lg z-10 -right-0">
+            <div className="h-96 mt-2 mr-0 ml-0 mb-0 h-30 rounded-lg ... ">
+            <div  className="h-28 mt-2 mr-3 ml-2  mb-0 h-30 relative bg-[#8C52FF] rounded-lg ...">
+            {isOpen1 && (
+            <div className="float absolute bg-white h-fit border mt-16 border-gray-300 w-full  ml-30 rounded-md shadow-lg z-10 -right-0">
          
-     <div className="bg-[#E8E2F4] w-80 ml-2 relative h-10 mt-3 border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ..."> 
+            <div className="bg-[#E8E2F4] w-80 ml-2 relative h-10 mt-3 border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ..."> 
           
           <div className="h-fit absolute left-3"  ><Image
           src="/play.svg"
