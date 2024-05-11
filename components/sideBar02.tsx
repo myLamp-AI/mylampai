@@ -2,6 +2,7 @@
 import React from "react"
 import Image from "next/image";
 import { useState } from "react";
+import ComponentB from "./Assessment";
 
 
 export default function SideBar(){
@@ -16,7 +17,12 @@ export default function SideBar(){
      const [isOpen3, setIsOpen3] = useState(false);
      const toggleDropdown3 = () => {
      setIsOpen3(!isOpen3);
-  };
+     };
+     const [showComponentB, setShowComponentB] = useState(false);
+
+     const toggleComponentB = () => {
+     setShowComponentB(!showComponentB);
+     };
 
     return (
     <>
@@ -101,19 +107,34 @@ export default function SideBar(){
             </div>
      </div>
      <div className="flex justify-between absolute inset-x-0 top-56 h-12 mt-2 mr-3 ml-2 mb-0 h-30 rounded-lg ...">
-        <div className="bg-white text-[15px] mt-2 mr-4 h-8 inset-y-0 text-centerw-16 ...">insights</div>
-        <div className="bg-white mt-2 mr h-8 inset-y-0 left-0 w-16 text-sm  ...">Roadmap</div>
+        <div className="bg-white text-[15px] mt-2 mr-4 h-8 w-24 inset-y-0 text-centerw-16 rounded-lg ...">
+          <div className="flex">
+            <div>
+             <Image
+             src="/insights.svg"
+             alt="Verceldcjncn Logo"
+             className="dark:invert"
+             width={25}
+             height={25}
+            />
+            </div>
+            <div>
+            <span className="text-[10px]">insights</span>
+            </div>
+            </div>
+            </div>
+        <div className="bg-white text-[15px] mt-2 mr-4 h-8 w-24 inset-y-0 text-centerw-16 rounded-lg ...">insights</div>
         <div className="bg-white mt-2 mr-10 h-8 inset-y-0 left-0 w-16 text-sm  ...">logo</div>
      </div>
       
       <div className="h-96 mt-2 mr-0 ml-0 mb-0 h-30 rounded-lg ... ">
-      <div onClick={toggleDropdown1} className="h-28 mt-2 mr-3 ml-2  mb-0 h-30 relative bg-[#8C52FF] rounded-lg ...">
+      <div  className="h-28 mt-2 mr-3 ml-2  mb-0 h-30 relative bg-[#8C52FF] rounded-lg ...">
       {isOpen1 && (
      <div className="float absolute bg-white h-fit border mt-16 border-gray-300 w-full  ml-30 rounded-md shadow-lg z-10 -right-0">
          
      <div className="bg-[#E8E2F4] w-80 ml-2 relative h-10 mt-3 border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ..."> 
           
-          <div className="h-fit absolute left-3"><Image
+          <div className="h-fit absolute left-3"  ><Image
           src="/play.svg"
           alt="Verceldcjncn Logo"
           className="dark:invert"
@@ -121,7 +142,10 @@ export default function SideBar(){
            height={25}
             />
             </div>
-            Language of ML: Python</div>
+            <div className="absolute left-12">
+            Language of ML: <span className=" text-[14px]"> Python</span>
+            </div>
+           </div>
      <div className="bg-[#E8E2F4] relative w-80 ml-2 h-10 mt-3 border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ...">
      <div className="h-fit absolute left-3"><Image
           src="/play.svg"
@@ -131,8 +155,11 @@ export default function SideBar(){
            height={25}
             />
             </div>
-      Language of ML: Phython</div>
-     <div className="bg-[#E8E2F4] relative w-80 ml-2 h-10 mt-3 border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ...">
+            <div className="absolute left-12">
+             Supervised Learning:<span className=" text-[14px]"> Classification</span>
+            </div>
+            </div>
+     <div onClick={toggleComponentB}  className="bg-[#E8E2F4] relative w-80 ml-2 h-10 mt-3 border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ...">
      <div className="h-fit absolute left-3"><Image
           src="/play.svg"
           alt="Verceldcjncn Logo"
@@ -140,7 +167,10 @@ export default function SideBar(){
            width={25}
            height={25}
             />
-            </div>Language of ML: Phython</div>
+            </div >
+            <div className="absolute left-12">
+            Assessment:<span className=" text-[14px]"> Python</span>
+            </div></div>
      <div className="bg-[#E8E2F4] w-80 ml-2 h-10 mt-3 relative border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ...">
      <div className="h-fit absolute left-3"><Image
           src="/play.svg"
@@ -150,7 +180,10 @@ export default function SideBar(){
            height={25}
             />
             </div>
-            Language of ML: Phython</div>
+            <div className="absolute left-12">
+            Hands on:<span className=" text-[14px]"> ML</span>
+            </div>
+            </div>
      <div className="bg-[#E8E2F4] w-80 ml-2 mb-3 h-10 mt-3 relative border-solid border-2 border-[#8C52FF] flex justify-center items-center rounded-full ...">
      <div className="h-fit absolute left-3"><Image
           src="/play.svg"
@@ -160,7 +193,9 @@ export default function SideBar(){
            height={25}
             />
             </div>
-            Language of ML: Phython</div>
+            <div className="absolute left-12">
+            ML:<span className=" text-[14px]"> Interact with data</span>
+            </div></div>
 
     </div>
       )}
@@ -174,13 +209,13 @@ export default function SideBar(){
             />
       </div>
       
-      <div className="h-20 relative mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
-      <div className="h-fit absolute right-14 top-3 ">
+      <div onClick={toggleDropdown1}  className="h-20 relative mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
+      <div className="h-fit absolute right-[70px] top-3 ">
           <div>
-        <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 2</span>
+        <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 1</span>
         </div>
         <div>
-        <span className=" text-left">Development Frameworks</span>
+        <span className=" text-left ">Getting Started with ML</span>
         </div>
         </div>
       <div className="rounded-full h-12 w-12 flex items-center justify-center bg-[#E8E2F4] absolute bottom-4 left-2.5"><Image
@@ -193,7 +228,7 @@ export default function SideBar(){
             </div>
       </div>
       </div>
-      <div onClick={toggleDropdown2} className=" relative h-28 mt-2 mr-3 ml-2 mb-0 h-30 bg-[#8C52FF] rounded-lg ...">
+      <div className=" relative h-28 mt-2 mr-3 ml-2 mb-0 h-30 bg-[#8C52FF] rounded-lg ...">
       {isOpen2 && (
        <div className="float absolute bg-white h-fir border mt-16 border-gray-300 w-full  ml-30 rounded-md shadow-lg z-10 -right-0">
          
@@ -205,7 +240,7 @@ export default function SideBar(){
       
       </div>
       )}
-      <div className="absolute onclick() bottom-3 right-3 h-3 w-3 flex  bg-white rounded-full ...">
+      <div className="absolute o bottom-3 right-3 h-3 w-3 flex  bg-white rounded-full ...">
       <Image
           src="/arrow.png"
           alt="Verceldcjncn Logo"
@@ -214,7 +249,7 @@ export default function SideBar(){
            height={10}
             />
       </div>
-      <div className="h-20  mb-0 h-30 bg-[#e9e8eb] relative rounded-lg ...">
+      <div onClick={toggleDropdown2}  className="h-20   mb-0 h-30 bg-[#e9e8eb] relative rounded-lg ...">
         <div className="h-fit absolute right-14 top-3 ">
           <div>
         <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 2</span>
@@ -233,7 +268,7 @@ export default function SideBar(){
             </div>
       </div>
       </div>
-      <div onClick={toggleDropdown3}  className=" relative h-28 mt-2 mr-3 ml-2 mb-0 h-30 bg-[#8C52FF] rounded-lg ...">
+      <div   className=" relative h-28 mt-2 mr-3 ml-2 mb-0 h-30 bg-[#8C52FF] rounded-lg ...">
       {isOpen3 && (
         <div className="float absolute bg-white h-fir border mt-16 border-gray-300 w-full  ml-30 rounded-md shadow-lg z-10 -right-0">
          
@@ -255,13 +290,13 @@ export default function SideBar(){
            height={10}
             />
       </div>
-      <div className="h-20 relative mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
+      <div  onClick={toggleDropdown3} className="h-20 relative mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
       <div className="h-fit absolute right-14 top-3 ">
           <div>
-        <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 2</span>
+        <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 3</span>
         </div>
         <div>
-        <span className=" text-left">Development Frameworks</span>
+        <span className=" text-left mr-[86px]">Cyber Security</span>
         </div>
         </div>
       <div className="rounded-full h-12 w-12 flex items-center justify-center bg-[#E8E2F4] absolute bottom-4 left-2.5"><Image
@@ -278,9 +313,10 @@ export default function SideBar(){
     
     
     </div>
-    <div className=" relative w-3/4 ...">
-
-     <div className=" flex border border-b-slate-300  absolute inset-x-0 top-0 h-14 ...">
+    <div className=" relative w-3/4 ...">{showComponentB && <ComponentB />}
+     
+     <div className={`${showComponentB ? 'w-[705px]' : 'w-full'} flex border border-b-slate-300 h-14 absolute inset-x-0 top-0 ...`}>
+     
      <div className=" absolute top-0 right-12 pt-4 pr-3 pb-0 pl-4 ">
      <Image
            src="/Group.png"
@@ -292,7 +328,7 @@ export default function SideBar(){
              />
      </div>
      <div className="relative grid gap-4 grid-cols-4">
-     <div className="   pt-4 pr-0 pb-0 pl-14">
+     <div className="pt-4 pr-0 pb-0 pl-14">
      <Image
             src="/menu bar-2.png"
             alt="Verceldcjncn Logo"
@@ -302,7 +338,7 @@ export default function SideBar(){
             priority
              />
      </div>
-     <div className="pt-3 ">Course</div>
+     <div className="pt-3 " onClick={toggleComponentB}>Course</div>
      <div className="pt-4 text-centre w-4">
      <Image
            src="/Vector (1).svg"
@@ -319,8 +355,10 @@ export default function SideBar(){
 
 
    </div>
-   <div className=" absolute flex border border-t-slate-300 inset-x-0 bottom-0 h-12 ...">
-    <div className="w-full  relative">
+
+   <div onClick={toggleComponentB} className={`overflow-hidden transition-width duration-800 ${showComponentB ? 'h-0' : 'h-12'} absolute flex border border-t-slate-300 inset-x-0 bottom-0 ... `}  >
+    
+    <div onClick={toggleComponentB} className= "w-full relative " >
     <div className=" absolute text-sm top-3 text-center right-10 w-16 bg-[#8C52FF] rounded-lg ...">
         Next 
     </div>
