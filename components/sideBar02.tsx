@@ -3,7 +3,8 @@ import React from "react"
 import Image from "next/image";
 import { useState } from "react";
 import ComponentB from "./Assessment";
-
+import Page1 from "./Video/Chapter1";
+import ImageComponent from "./Image/ImageLearn";
 
 
 export default function SideBar(){
@@ -24,19 +25,21 @@ export default function SideBar(){
      const toggleComponentB = () => {
      setShowComponentB(!showComponentB);
      };
+     const videoId = '7KDRqBpT8NA';
 
     return (
     <>
-     <div className=" h-screen flex ...">
-     <div className=" relative grid grid-row-7 gap-6 bg-[#E8E2F4] border border-r-slate-300 w-1/4 ...">  
-     <div className="flex absolute inset-x-0 h-24 mt-2 mr-3 ml-2 mb-0 rounded-lg bottom-0 bg-white ...">
+        <div className=" h-screen flex ...">
+        <div className=" relative grid grid-row-7 gap-6 bg-[#E8E2F4] border border-r-slate-300 w-1/4 ...">  
+        <div className="flex absolute inset-x-0 h-24 mt-2 mr-3 ml-2 mb-0 rounded-lg bottom-0 bg-white ...">
         <div className="bg-[#8C52FF] w-1/3 rounded-lg ... ">
-        <div className="rounded-full h-16 w-16 flex items-center justify-center bg-white mt-4 ml-5"><Image
-          src="/Vector-2.svg"
-          alt="Verceldcjncn Logo"
-          className="dark:invert"
-           width={45}
-           height={45}
+        <div className="rounded-full h-16 w-16 flex items-center justify-center bg-white mt-4 ml-5">
+          <ImageComponent
+             src="/Vector-2.svg"
+             alt="Verceldcjncn Logo"
+             width={45}
+             height={45}
+             priority={true}
             />
             </div>
             
@@ -95,10 +98,10 @@ export default function SideBar(){
            height={55}
             />
             </div>
-            <div className="rounded-full h-12 w-12 flex items-center justify-center bg-white mr-25 -mt-14 ml-64"><Image
+            <div className="rounded-full h-12 w-12 flex items-center justify-center bg-white mr-25 -mt-14 ml-64">
+          <ImageComponent
           src="/calendar.svg"
           alt="Verceldcjncn Logo"
-          className="dark:invert"
            width={35}
            height={35}
             />
@@ -336,7 +339,14 @@ export default function SideBar(){
     
     </div>
     <div className=" relative w-3/4 ...">{showComponentB && <ComponentB />}
-     
+     <div  className={`${showComponentB ? 'w-1/2 &&  left-20 ' : 'w-3/4 && left-32'} absolute top-[100px] h-2/3 bg-white..`}>
+      <div className="h-full w-full bg-slate-300">
+        {
+       <Page1 />
+        }
+       </div>
+     </div>
+    
      <div className={`${showComponentB ? 'w-[705px]' : 'w-full'} flex border border-b-slate-300 h-14 absolute inset-x-0 top-0 ...`}>
      
      <div className=" absolute top-0 right-12 pt-4 pr-3 pb-0 pl-4 ">
@@ -347,7 +357,7 @@ export default function SideBar(){
             width={15}
             height={15}
             priority
-             />
+            />
      </div>
      <div className="relative grid gap-4 grid-cols-4">
      <div className="pt-4 pr-0 pb-0 pl-14">
@@ -363,9 +373,9 @@ export default function SideBar(){
      <div className="pt-3 " onClick={toggleComponentB}>Course</div>
      <div className="pt-4 text-centre w-4">
      <Image
-           src="/Vector (1).svg"
-           alt="Verceldcjncn Logo"
-           className="dark:invert"
+            src="/Vector (1).svg"
+            alt="Verceldcjncn Logo"
+            className="dark:invert"
             width={10}
             height={15}
             priority
