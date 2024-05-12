@@ -35,10 +35,10 @@ export default function SideBar(){
         <div className="bg-[#8C52FF] w-1/3 rounded-lg ... ">
         <div className="rounded-full h-16 w-16 flex items-center justify-center bg-white mt-4 ml-5">
           <ImageComponent
-             src="/Vector-2.svg"
+             src="/project.svg"
              alt="Verceldcjncn Logo"
-             width={45}
-             height={45}
+             width={65}
+             height={65}
              priority={true}
             />
             </div>
@@ -46,7 +46,7 @@ export default function SideBar(){
         </div>
         <div className="w-2/5 bg-white rounded-lg ..."> <div className="h-fit absolute  right-50 top-6 ">
       <div>
-        <span className="text-left  text-black font-bold text-decoration-line: underline font-size: 0.75rem ...">Capstone Project</span>
+        <span className="text-centre ml-10  text-black font-semibold text-base/6 ...">Capstone Project</span>
         </div>
         </div></div>
      </div>  
@@ -91,7 +91,7 @@ export default function SideBar(){
         </div>
         </div>
      <div className="rounded-full h-14 w-14 flex items-center justify-center  mt-6 ml-2"><Image
-          src="/robot.svg"
+          src="/robot-3.svg"
           alt="Verceldcjncn Logo"
           className="dark:invert"
            width={55}
@@ -234,7 +234,7 @@ export default function SideBar(){
             />
       </div>
       
-      <div onClick={toggleDropdown1}  className="h-20 relative mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
+      <div onClick={toggleDropdown1}  className="h-20 relative mb-0 h-30 border border-gray-300 bg-[#e9e8eb] rounded-lg ...">
       <div className="h-fit absolute right-[70px] top-3 ">
           <div>
         <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 1</span>
@@ -274,7 +274,7 @@ export default function SideBar(){
            height={10}
             />
       </div>
-      <div onClick={toggleDropdown2}  className="h-20   mb-0 h-30 bg-[#e9e8eb] relative rounded-lg ...">
+      <div onClick={toggleDropdown2}  className="h-20 border border-gray-300  mb-0 h-30 bg-[#e9e8eb] relative rounded-lg ...">
         <div className="h-fit absolute right-14 top-3 ">
           <div>
         <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 2</span>
@@ -315,7 +315,7 @@ export default function SideBar(){
            height={10}
             />
       </div>
-      <div  onClick={toggleDropdown3} className="h-20 relative mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
+      <div  onClick={toggleDropdown3} className="h-20 relative border border-gray-300  00 mb-0 h-30 bg-[#e9e8eb] rounded-lg ...">
       <div className="h-fit absolute right-14 top-3 ">
           <div>
         <span className="text-left   text-decoration-line: underline font-size: 0.75rem ...">chapter 3</span>
