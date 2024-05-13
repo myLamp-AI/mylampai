@@ -9,21 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@headlessui/react": "^2.0.3",
-=======
     "@types/react-youtube": "^7.10.0",
     "autoprefixer": "^10.4.19",
->>>>>>> e8fbdd5f47644f4c5f301c415a6456f148cbfe6e
     "next": "14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18",
-<<<<<<< HEAD
-    "react-icons": "^5.2.1"
-=======
     "react-icons": "^5.2.1",
     "react-youtube": "^10.1.0"
->>>>>>> e8fbdd5f47644f4c5f301c415a6456f148cbfe6e
   },
   "devDependencies": {
     "@types/node": "^20",
