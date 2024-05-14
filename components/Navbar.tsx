@@ -1,8 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
-
-
+import Link from 'next/link'
 
 const Navbar = () => {
     return (
@@ -10,22 +7,20 @@ const Navbar = () => {
             <nav className="bg-white rounded-y-xl border-2 border-gray-300 text-white">
                 <div className=" mx-auto px-4">
                     <div className="flex justify-between items-center h-16">
-
                         <div className="  flex-shrink-0">
-
-                            <a href="#" className="flex float-left text-purple-700 text-xl font-semibold">
+                            <Link href="/" className="flex float-left text-purple-700 text-xl font-semibold">
                                 <Image
-                                    src="/logo.jpeg"
+                                    src="/logo.png"
                                     alt="Verceldcjncn Logo"
                                     className="mr-2"
-                                    width={30}
-                                    height={20}
+                                    width={100}
+                                    height={40}
                                     priority
-                                />mylamp.AI</a>
+                                />
+                            </Link>
                         </div>
 
                         <div className="hidden md:flex items-center">
-
                             <a href="/" className="flex items-center text-black  border-2 border-purple-700 bg-white hover:bg-purple-100 hover:text-gray-700 hover:text-md px-3 py-2 mr-2 rounded-3xl">
                                 <Image
                                     src="/Group.png"
@@ -45,7 +40,8 @@ const Navbar = () => {
                                     width={20}
                                     height={20}
                                     priority
-                                />Menu</a>
+                                />Menu
+                            </a>
                         </div>
 
 
@@ -70,8 +66,6 @@ const Navbar = () => {
                     <a href="#" className="block text-white hover:bg-gray-700 px-4 py-2">Account</a>
                 </div>
             </nav>
-
-
         </>
     )
 }

@@ -4,18 +4,14 @@ import LearnCollapseItem from "./LearnCollapseItem";
 export default function LearnCollapseCard() {
     return (
         <>
-            {/* <div className="bg-white flex space-between rounded-md overflow-hidden transition-all duration-300 max-h-0 peer-checked:max-h-full ">
-         
-                
-            </div> */}
             <div className="p-4 text-white flex flex-row ">
                 <div className="w-80 h-full ">
                     <LearnCollapseItem />
                     <LearnCollapseItem />
                     <LearnCollapseItem />
                     <LearnCollapseItem />
-
                 </div>
+
                 <div className=" ml-7 w-1/2">
                     <div className="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div className="flex justify-between items-center">
@@ -38,7 +34,6 @@ export default function LearnCollapseCard() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     )
