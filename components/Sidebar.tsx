@@ -212,7 +212,7 @@ const Sidebar = () => {
               <div className=" ml-6  bg-white full sm:w-1/3 border border-gray-300 rounded-md"></div>
             </div>
             {/* ---------------------------long-card-------------------------------------- */}
-            <div className=" flex bg-white shadow rounded-lg p-4  mb-3">
+            <div className=" flex bg-white shadow rounded-t-md p-4 rouned-b-none mb-3">
               <div className="w-full md:w-1/6 ">
                 <Image
                   src="/ai.svg"
@@ -257,47 +257,191 @@ const Sidebar = () => {
                   <div className="bg-blue-500 mt-7 rounded-full h-2"></div>
                 </div>
 
-              
+                <div>
                   <p className="text-gray-600 text-sm mt-2">Progress: 66%</p>
-                  
-                  <div className="relative w-[400] overflow-hidden ">
-                  <input
-                    type="checkbox"
-                    className="
-                peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
-                  />
-                  <div className="bg-white h-10 w-full pl-5 flex items-center rounded-md">
-                    {/* <h1 className="text-lg font-semi-bold text-white ">
-                 
-                    open
-                  </h1> */}
-                  </div>
-                  <div className="absolute top-3 right-3 text-black transition-transform duration-500 rotate-0 peer-checked:rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </div>
-                  <div className="bg-blue-500 rounded-md overflow-hidden transition-all duration-300 max-h-0 peer-checked:max-h-full ">
-                    {/* content------- */}
-                  </div>
                 </div>
               </div>
-              
             </div>
-            
+            <div className=" -mt-3 relative w-[400] overflow-hidden ">
+              <input
+                type="checkbox"
+                className="
+                peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
+              />
+              <div className="bg-white h-10 w-full pl-5 flex items-center ">
+                {/* <h1 className="text-lg font-semi-bold text-white ">
+                 
+                    open
+                  </h1> */}
+              </div>
+              <div className="absolute top-3 right-3 text-black transition-transform duration-500 rotate-0 peer-checked:rotate-180">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </div>
+              <div className="bg-white flex space-between rounded-md overflow-hidden transition-all duration-300 max-h-0 peer-checked:max-h-full ">
+                {/* content------- */}
+                <div className="p-4 text-white flex flex-row ">
+                  <div className="w-80 h-full ">
+                    <div className="w-50 h-14 flex hover:text-purple-700 justify-between mb-7 rounded-md hover:bg-white bg-purple-100">
+                      <div className="text-black text-md ml-5 ">
+                        <h5 className="text-gray-500 "> Chapter 1</h5>
+                        <h3> Getting started with python</h3>
+                      </div>
+                      <div className="float:right mt-3 text-black mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-8"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="w-50 h-14 flex justify-between mb-7 rounded-md hover:bg-white bg-purple-100">
+                      <div className="text-black text-md ml-5">
+                        <h5 className="text-gray-500"> Chapter 1</h5>
+                        <h3> Getting started with python</h3>
+                      </div>
+                      <div className="float:right mt-3 text-black mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-8"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="w-50 h-14 flex justify-between mb-7 rounded-md hover:bg-white bg-purple-100">
+                      <div className="text-black text-md ml-5">
+                        <h5 className="text-gray-500"> Chapter 1</h5>
+                        <h3> Getting started with python</h3>
+                      </div>
+                      <div className="float:right mt-3 text-black mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-8"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="w-50 h-14 flex justify-between mb-7 rounded-md hover:bg-white bg-purple-100">
+                      <div className="text-black text-md ml-5">
+                        <h5 className="text-gray-500"> Chapter 1</h5>
+                        <h3> Getting started with python</h3>
+                      </div>
+                      <div className="float:right mt-3 text-black mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-8"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="w-50 h-14 flex justify-between mb-7 rounded-md hover:bg-white hover:text-purple-700 bg-purple-100">
+                      <div className="text-black text-md ml-5">
+                        <h5 className="text-white-500 text-xs hover:text-purple-700">
+                          {" "}
+                          Chapter 1
+                        </h5>
+                        <h3> Getting started with python</h3>
+                      </div>
+                      <div className="float:right mt-3 text-black mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-8"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className=" ml-7 w-1/2">
+                  <div className="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <div className="flex justify-between items-center">
+    <h1 className="text-2xl font-bold">Lessons</h1>
+    <span className="bg-blue-500 text-black px-2 py-1 rounded">Not started!</span>
+  </div>
+  <div className="mt-4">
+    <h2 className="text-xl font-bold">Language of ML: Python</h2>
+    <p>Supervised Learning: classNameification</p>
+    <p>Assessment: Python</p>
+    <p>Hands on: ML</p>
+  </div>
+  <div className="mt-4">
+    <h2 className="text-xl font-bold">Revise</h2>
+    <p>Completed</p>
+  </div>
+  <div className="mt-4">
+    <h2 className="text-xl font-bold">ML: Interact with data</h2>
+    <p>Not started!</p>
+  </div>
+</div>
+</div>
+                   
+                      
+                       
+                      
+                      
+                 
+                </div>
+              </div>
+            </div>
+            {/* ---------------------------------------------------------------- */}
 
-            <div className=" flex bg-white shadow rounded-lg p-4  mb-3">
+            <div className=" flex rounded- bg-white shadow rounded-lg p-4 mt-3 mb-3">
               <div className="w-full md:w-1/6 ">
                 <Image
                   src="/ai.svg"
@@ -342,10 +486,9 @@ const Sidebar = () => {
                   <div className="bg-blue-500 mt-7 rounded-full h-2"></div>
                 </div>
 
-              
-                  <p className="text-gray-600 text-sm mt-2">Progress: 66%</p>
-                  
-                  <div className="relative w-[400] overflow-hidden ">
+                <p className="text-gray-600 text-sm mt-2">Progress: 66%</p>
+
+                <div className="relative w-[400] overflow-hidden ">
                   <input
                     type="checkbox"
                     className="
@@ -378,7 +521,38 @@ const Sidebar = () => {
                   </div>
                 </div>
               </div>
-              
+            </div>
+            <div className=" -mt-3 relative w-[400] overflow-hidden ">
+              <input
+                type="checkbox"
+                className="
+                peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
+              />
+              <div className="bg-white h-10 w-full pl-5 flex items-center ">
+                {/* <h1 className="text-lg font-semi-bold text-white ">
+                 
+                    open
+                  </h1> */}
+              </div>
+              <div className="absolute top-3 right-3 text-black transition-transform duration-500 rotate-0 peer-checked:rotate-180">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </div>
+              <div className="bg-blue-500 rounded-md overflow-hidden transition-all duration-300 max-h-0 peer-checked:max-h-full ">
+                {/* content------- */}
+              </div>
             </div>
           </div>
         </div>
