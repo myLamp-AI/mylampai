@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from "next/image";
 
 interface ImageProps {
   src: string;
@@ -10,16 +10,15 @@ interface ImageProps {
 
 const ImageComponent: React.FC<ImageProps> = ({ src, alt, width, height, priority = false }) => {
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
       width={width}
       height={height}
-      loading={priority ? "eager" : "lazy"} // Set loading attribute based on priority
-      className="dark:invert" // Apply any additional classes here
+      loading={priority ? "eager" : "lazy"}
+      className="dark:invert" 
     />
   );
 };
 
 export default ImageComponent;
-
