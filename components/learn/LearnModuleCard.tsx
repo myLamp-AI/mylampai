@@ -5,10 +5,13 @@ import { useState } from "react";
 
 export default function LearnModuleCard() {
     const [showCollapse, setShowCollapse] = useState(false);
+   
+
+
 
     return (
         <>
-            <div className="bg-white my-3">
+            <div  className="bg-white my-3 rounded-lg">
                 <div className=" flex shadow rounded-t-md p-2 rouned-b-none mb-3">
                     <div className="w-full md:w-1/6 ">
                         <Image
@@ -20,11 +23,11 @@ export default function LearnModuleCard() {
                             priority
                         />
                     </div>
-                    <div className="w-full sm:w-1/2 ">
-                        <h4 className="mb-2 underline text-purple-700 font-bold">
+                    <div  className="w-full sm:w-1/2 ">
+                        <h4   className="mb-2 mt-3 underline text-purple-700 font-bold">
                             Module 1
                         </h4>
-                        <h1 className=" mb-4 text-4xl font-bold">
+                        <h1 className=" mb-4 mt-2 text-4xl font-bold">
                             {" "}
                             Tech 101: Starting in Tech
                         </h1>
@@ -58,7 +61,7 @@ export default function LearnModuleCard() {
                             <p className="text-gray-600 text-sm mt-2">Progress: 66%</p>
                         </div>
                     </div>
-                    <div onClick={() => setShowCollapse(!showCollapse)}>
+                    <div  className="ml-5 mt-10" onClick={() => setShowCollapse(!showCollapse)}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -75,12 +78,13 @@ export default function LearnModuleCard() {
                         </svg>
                     </div>
 
-
+                    
                 </div>
                 {
                     showCollapse && (
                         <>
                             <LearnCollapseCard />
+                            
 
                         </>
                     )
