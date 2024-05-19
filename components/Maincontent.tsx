@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Maincontent = () => {
   return (
    <>
-    <div className=" bg-purple-100 container relative flex flex-col justify-between h-full w-80 px-10 mx-auto xl:px-0 mt-5">
+    <div className=" top-0 z-0 bg-purple-100 container relative flex flex-col justify-between h-full w-80 px-10 mx-auto xl:px-0 mt-5">
           <div className="w-full">
             <div className="flex flex-col w-full mb-5 sm:flex-row">
               <div className="w-full mb-10 sm:mb-0 sm:w-1/2">
@@ -24,7 +24,7 @@ const Maincontent = () => {
                   <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">
                       <p className="text-sm text-gray-600 flex items-center"></p>
-                      <div className="text-gray-900 font-bold text-xl mb-2 ">
+                      <div className="text-gray-900 font-bold text-xl mb-2 sm:text-pink-700">
                         Introduction to Machine Learning
                       </div>
                       <div className="flex ">

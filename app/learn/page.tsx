@@ -1,20 +1,16 @@
-import React from 'react'
-
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
+import React from 'react'
 
 
 const page = () => {
   return (
     <>
-      
-     <div>
-      I am home Page
-     </div>
-      
-      
+    
+    <Sidebar />
+
     </>
   )
 }
 
-export default page;
+export default page

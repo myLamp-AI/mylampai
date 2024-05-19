@@ -23,7 +23,7 @@ const Sidebar = () => {
                     <Image
                       src="/image.svg"
                       alt="Verceldcjncn Logo"
-                      className="mr-4"
+                      className="mr-4 "
                       width={500}
                       height={24}
                       priority
@@ -71,9 +71,9 @@ const Sidebar = () => {
                         <button className="mr-4 bg-purple-700 p-2 rounded-sm font-bold-md text-white">
                           view insights
                         </button>
-                        <button className=" bg-purple-700 p-2 rounded-sm font-bold-md text-white">
+                        <Link  href ="/learn/chapters" className=" bg-purple-700 p-2 rounded-sm font-bold-md text-white">
                           resume learning
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -85,6 +85,8 @@ const Sidebar = () => {
 
             <LearnModuleCard />
 
+            <LearnModuleCard />
+            <LearnModuleCard />
             <LearnModuleCard />
 
           </div>
