@@ -1,17 +1,15 @@
 import React from 'react'
+import Link from 'next/link'
 
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
-import Explore from '@/components/Explore/page'
+
 
 
 const page = () => {
   return (
-    <>
-      <Explore/>
-    
-      
-      
+    <>    
+    <Link href="/Explore">Explore</Link>    
     </>
   )
 }
