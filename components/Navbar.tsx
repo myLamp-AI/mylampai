@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Navbar = () => {
     return (
         <>
-            <nav className="bg-white rounded-y-xl border-2 border-gray-300 text-white">
+            <nav className=" sticky top-0 z-50 bg-white rounded-y-xl border-2 border-gray-300 text-white">
                 <div className=" mx-auto px-4">
                     <div className="flex justify-between items-center h-16">
                         <div className="  flex-shrink-0">

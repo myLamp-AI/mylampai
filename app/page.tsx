@@ -7,9 +7,12 @@ import Sidebar from '@/components/Sidebar'
 
 
 const page = () => {
-  return (
-    <>    
-    <Link href="/Explore">Explore</Link>    
+    <>
+      
+     <div>
+      I am home Page
+       <Link href="/Explore">Explore</Link> 
+     </div>
     </>
   )
 }

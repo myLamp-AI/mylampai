@@ -5,36 +5,39 @@ import { useState } from "react";
 
 export default function LearnModuleCard() {
     const [showCollapse, setShowCollapse] = useState(false);
+   
+
+
 
     return (
         <>
-            <div className="bg-white my-3">
-                <div className=" flex shadow rounded-t-md p-2 rouned-b-none mb-3">
-                    <div className="w-full md:w-1/6 ">
+            <div  className="bg-white my-3 rounded-lg">
+                <div className=" flex sm:w-30 shadow rounded-t-md p-2 rouned-b-none mb-3">
+                    <div className="w-full xl:w-1/6  ">
                         <Image
                             src="/ai.svg"
                             alt="Verceldcjncn Logo"
-                            className="mt-6 mb-5 border-rad mr-4"
+                            className="    mt-6 ml-5 mb-5 border-rad mr-4"
                             width={90}
                             height={90}
                             priority
                         />
                     </div>
-                    <div className="w-full sm:w-1/2 ">
-                        <h4 className="mb-2 underline text-purple-700 font-bold">
+                    <div  className="w-full sm:w-1/2  ">
+                        <h4   className="mb-2 mt-3 underline text-purple-700 font-bold">
                             Module 1
                         </h4>
-                        <h1 className=" mb-4 text-4xl font-bold">
+                        <h1 className=" sm:text-xs md:text-md mb-4 mt-2 xl:text-4xl font-bold">
                             {" "}
                             Tech 101: Starting in Tech
                         </h1>
-                        <p className="font-bold text-gray-500">
+                        <p className="md:flex text-sm font-bold text-gray-500">
                             {" "}
                             7 Lessons 7 weeks 7 credits
                         </p>
                     </div>
                     <div className=" mt-6 w-40">
-                        <h1 className="font-bold text-gray-600">Grade</h1>
+                        <h1 className="font-bold text-gray-600 xl:text-md sm:text-xs">Grade</h1>
                         <span className="text-sm">66%</span>
                     </div>
 
@@ -58,7 +61,7 @@ export default function LearnModuleCard() {
                             <p className="text-gray-600 text-sm mt-2">Progress: 66%</p>
                         </div>
                     </div>
-                    <div onClick={() => setShowCollapse(!showCollapse)}>
+                    <div  className="ml-5 mt-10" onClick={() => setShowCollapse(!showCollapse)}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -75,7 +78,7 @@ export default function LearnModuleCard() {
                         </svg>
                     </div>
 
-
+                    
                 </div>
                 {
                     showCollapse && (
