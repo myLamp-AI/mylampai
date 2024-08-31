@@ -66,8 +66,6 @@ const StepOneTwo: React.FC<StepOneTwoProps> = ({
 
   const { token } = useUserStore();
 
-  console.log("Resume File:", resumeFile);
-
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -84,9 +82,15 @@ const StepOneTwo: React.FC<StepOneTwoProps> = ({
         return;
       }
 
-      setResumeFile(file);
+      const reader = new FileReader();
 
-      console.log("File:", file);
+      reader.onload = async () => {
+        const arrayBuffer = reader.result as ArrayBuffer;
+        const typedArray = new Uint8Array(arrayBuffer);
+        setResumeFile(typedArray);
+      };
+
+      reader.readAsArrayBuffer(file); 
 
       const fileReader = new FileReader();
       let extractedText = "";
