@@ -63,7 +63,6 @@ const StepOneTwo: React.FC<StepOneTwoProps> = ({
   const [isResumeUploaded, setIsResumeUploaded] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [otherProfile, setOtherProfile] = useState("");
-  const [localResume, setLocalResume] = useState<File | null>(null);
 
   const { token } = useUserStore();
 
@@ -86,7 +85,6 @@ const StepOneTwo: React.FC<StepOneTwoProps> = ({
       }
 
       setResumeFile(file);
-      setLocalResume(file);
 
       console.log("File:", file);
 

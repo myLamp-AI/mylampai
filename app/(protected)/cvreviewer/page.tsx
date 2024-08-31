@@ -6,14 +6,14 @@ import PDFViewer from "./StepThree";
 import { useUserStore } from "@/utils/userStore";
 import { toast } from "sonner";
 
-const baseUrl = "https://ai-cv-review-b6ddhshaecbkcfau.centralindia-01.azurewebsites.net";
+const baseUrl =
+  "https://ai-cv-review-b6ddhshaecbkcfau.centralindia-01.azurewebsites.net";
 
 const Page: React.FC = () => {
   const {
     setResumeFile,
     setJobDescriptionFile,
-    resumeFile,
-    jobDescriptionFile,
+    resumeFile
   } = useInterviewStore();
   const [step, setStep] = useState(1);
   const [isManualEntry, setIsManualEntry] = useState(false);
@@ -25,7 +25,7 @@ const Page: React.FC = () => {
 
   const handleDrop = async (
     event: DragEvent<HTMLDivElement>,
-    setFile: (file: File) => void,
+    setFile: (file: File) => void
   ) => {
     event.preventDefault();
     const files = event.dataTransfer?.files;
@@ -51,7 +51,7 @@ const Page: React.FC = () => {
 
   const triggerFileInput = (inputId: string) => {
     const inputElement = document.getElementById(
-      inputId,
+      inputId
     ) as HTMLInputElement | null;
     if (inputElement) {
       inputElement.click();
@@ -71,7 +71,7 @@ const Page: React.FC = () => {
   };
 
   const handleJobDescriptionUpload = async (
-    event: ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target?.files?.[0];
     if (file) {
@@ -134,7 +134,7 @@ const Page: React.FC = () => {
 
   const uploadCVAndJobDescription = async (
     resumeFileBinary: ArrayBuffer,
-    jobDescriptionText: string,
+    jobDescriptionText: string
   ) => {
     try {
       if (!token) {
@@ -193,13 +193,13 @@ const Page: React.FC = () => {
           profile={profile} // Pass the profile
           setProfile={setProfile} // Pass the setProfile function
         />
-      ) : step === 3 ? (
+      ) : (
         <PDFViewer
           profile={profile}
           structuredData={structuredData}
           localResume={localResume}
         />
-      ) : null}
+      )}
     </div>
   );
 };

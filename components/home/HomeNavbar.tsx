@@ -3,23 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
-// import { SlBell } from "react-icons/sl";
-// import { FiUser } from "react-icons/fi";
-// import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { useUserStore } from "@/utils/userStore";
-// import { useRouterStore } from "@/utils/useRouteStore";
-import { signOut } from "next-auth/react";
 import {
   CommunityComponent,
   ResourcesComponent,
   CompanyComponent,
 } from "./HomeNavbarComponents";
-// import { useRouter } from "next/navigation";
 
 const HomeNavbar = () => {
   const { data: session } = useSession();
   const [scroll, setScroll] = useState(false);
-  const { userData, setUserData } = useUserStore();
+  const { userData, setUserData, token } = useUserStore();
   const [initials, setInitials] = useState("Profile");
 
   const handleScroll = () => {
@@ -50,7 +44,7 @@ const HomeNavbar = () => {
   }, [session]);
 
   useEffect(() => {
-    if (session) {
+    if (session && !token) {
       getToken();
     }
   }, [session]);
