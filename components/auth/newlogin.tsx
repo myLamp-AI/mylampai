@@ -190,7 +190,7 @@ const AuthForm: React.FC = () => {
         toast.success("Registration successful!");
         setUserData(userData.user, userData.token);
         setIsSigningUp(false);
-        router.push("/questions");
+        router.push("/achieve");
       } else {
         const errorData = await res.json();
         toast.error(errorData.error || "Registration failed");
@@ -229,14 +229,14 @@ const AuthForm: React.FC = () => {
         const data = await response.json();
 
         // Store user data and token in cookies
-        setCookie("token", data.token, 7); // Set cookie for 7 days
+        setCookie("token", data.token, 7); 
         setCookie("user", JSON.stringify(data.user), 7); // Set cookie for 7 days
 
         toast.success("Login successful!");
 
         setUserData(data.user, data.token);
 
-        router.push("/profile");
+        router.push("/achieve");
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Login failed. Please try again.");
@@ -263,7 +263,7 @@ const AuthForm: React.FC = () => {
 
   useEffect(() => {
     if (session?.user || userData) {
-      router.push("/");
+      router.push("/achieve");
     } else {
       clearUser();
     }
