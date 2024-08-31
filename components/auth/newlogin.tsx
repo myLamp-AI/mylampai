@@ -589,12 +589,12 @@ const AuthForm: React.FC = () => {
                     onChange={handleCredentialsChange}
                   />
 
-                  <button
+                  <div
                     onClick={() => setIsOtpLogin(!isOtpLogin)}
                     className="text-primary text-left font-semibold px-4"
                   >
                     {isOtpLogin ? "Login with Password" : "Login via OTP"}
-                  </button>
+                  </div>
                 </div>
 
                 {isOtpLogin ? (
