@@ -1,8 +1,5 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import { useUserStore } from "@/utils/userStore";
-import { toast } from "sonner";
 import { useSession } from "next-auth/react";
 
 export default function ProfilePage() {
