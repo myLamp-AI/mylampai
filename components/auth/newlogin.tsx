@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -269,7 +269,7 @@ const AuthForm: React.FC = () => {
     }
   }, [session]);
 
-  const sendOTPforlogin = async () => {
+  const sendOTPforlogin = useCallback( async () => {
     try {
       const response = await fetch("/api/auth/send-otp", {
         method: "POST",
@@ -281,14 +281,15 @@ const AuthForm: React.FC = () => {
 
       if (response.ok) {
         setOtpSent(true);
-        // Display a success message using Sonner or any other method
+        toast.success("OTP sent successfully!");
       } else {
-        // Handle errors, show an error message
+        
       }
     } catch (error) {
+      toast.error("Failed to send OTP");
       console.error("Error sending OTP:", error);
     }
-  };
+  }, [credentials.email]);
 
   const verifyOTPforlogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

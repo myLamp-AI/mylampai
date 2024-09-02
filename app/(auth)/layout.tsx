@@ -3,7 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "../globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
-import Script from "next/script";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const openSans = Open_Sans({ subsets: ["latin"], display: "swap" });
 
@@ -20,16 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${openSans.className} h-full overflow-hidden`}>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-3TPKSH7MPS"></Script>
-        <Script>
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-3TPKSH7MPS');
-        `}
-        </Script>
+        <GoogleAnalytics gaId="G-3TPKSH7MPS" />
         <main className="h-full">
           <AuthProvider>{children}</AuthProvider>
           <Toaster position="top-center" />
