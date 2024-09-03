@@ -11,10 +11,11 @@ import PowerOfWize from "@/components/home/PowerOfWize";
 import RecentAdvances from "@/components/home/RecentAdvances";
 import CommunitySection from "@/components/home/Community";
 import HomeSlider from "@/components/home/HomeSlider";
-import HomeNavbar from "@/components/home/HomeNavbar";
 import './home.css';
 
-const SectionWrapper = ({ children }) => {
+const SectionWrapper = ({ children }: {
+  children: React.ReactNode;
+}) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: false, // This makes the animation trigger every time

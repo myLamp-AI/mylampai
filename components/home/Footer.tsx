@@ -130,7 +130,7 @@ export default function Footer() {
                   Know everything about Wize in just 1 call
                 </div>
                 <div className="flex gap-4 w-full">
-                  <div className="flex gap-2 bg-white rounded-lg p-2 text-center items-center text-xs w-1/2">
+                  <a href="https://calendar.app.google/xKb1DCrgBn3S7BT88" target="_blank" className="flex gap-2 bg-white rounded-lg p-2 text-center items-center text-xs w-1/2">
                     <Image
                       src={"/home/desktop.svg"}
                       height={30}
@@ -138,8 +138,8 @@ export default function Footer() {
                       alt="desktop"
                     />
                     Connect Now
-                  </div>
-                  <div className="flex gap-2 bg-white rounded-lg p-2 text-center items-center text-xs w-1/2">
+                  </a>
+                  <a href="https://calendar.app.google/xKb1DCrgBn3S7BT88" target="_blank" className="flex gap-2 bg-white rounded-lg p-2 text-center items-center text-xs w-1/2">
                     <Image
                       src={"/home/schedule.svg"}
                       height={30}
@@ -147,7 +147,7 @@ export default function Footer() {
                       alt="schedule"
                     />
                     Connect Later
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

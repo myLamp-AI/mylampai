@@ -24,7 +24,7 @@ import {
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
-const baseUrl = "https://cv-judger.onrender.com";
+const baseUrl = "https://ai-cv-review-b6ddhshaecbkcfau.centralindia-01.azurewebsites.net";
 
 interface PDFViewerProps {
   profile: string | null;
@@ -203,7 +203,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
             result = await analyzeResume(endpoint, data, query);
             if (result?.message?.bulletPoints) {
               // Loop through each object in the bulletPoints array
-              result.message.bulletPoints.forEach((bulletPoint) => {
+              result.message.bulletPoints.forEach((bulletPoint: any) => {
                 const textToHighlight = [bulletPoint.original]; // Wrap in array
                 setSentencesToHighlight((prevState) => [
                   ...prevState,
@@ -253,7 +253,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
             if (result?.message) {
               const sentencesToHighlight = Object.values(
                 result.message
-              ).flatMap((item) => item.correction);
+              ).flatMap((item: any) => item.correction);
 
               if (sentencesToHighlight.length > 0) {
                 console.log(
@@ -272,7 +272,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
           } else {
             const sentencesToHighlight = Object.values(
               reviewedData.verb_tense_checker
-            ).flatMap((item) => item.correction);
+            ).flatMap((item: any) => item.correction);
 
             if (sentencesToHighlight.length > 0) {
               setSentencesToHighlight(sentencesToHighlight);
@@ -370,7 +370,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
             if (result?.message) {
               const sentencesToHighlight = Object.values(
                 result.message
-              ).flatMap((item) => item.text);
+              ).flatMap((item: any) => item.text);
 
               if (sentencesToHighlight.length > 0) {
                 setSentencesToHighlight(sentencesToHighlight);
@@ -385,7 +385,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
           } else {
             const sentencesToHighlight = Object.values(
               reviewedData.repetition_checker
-            ).flatMap((item) => item.text);
+            ).flatMap((item: any) => item.text);
 
             if (sentencesToHighlight.length > 0) {
               setSentencesToHighlight(sentencesToHighlight);
@@ -415,7 +415,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
             if (result?.message) {
               const sentencesToHighlight = Object.values(
                 result.message
-              ).flatMap((item) => item?.correction);
+              ).flatMap((item: any) => item?.correction);
 
               if (sentencesToHighlight.length > 0) {
                 setSentencesToHighlight(sentencesToHighlight);
@@ -430,7 +430,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
           } else {
             const sentencesToHighlight = Object.values(
               reviewedData.responsibility_checker
-            ).flatMap((item) => item.correction);
+            ).flatMap((item: any) => item.correction);
 
             if (sentencesToHighlight.length > 0) {
               setSentencesToHighlight(sentencesToHighlight);
@@ -532,8 +532,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
         const loadingTask = pdfjsLib.getDocument({ data: pdfData });
         const pdf = await loadingTask.promise;
         const page = await pdf.getPage(1);
-        const viewport = page.getViewport({ scale: 1 });
-
         const viewport = page.getViewport({ scale: 1 });
 
         const canvas = canvasRef.current;
