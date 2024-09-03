@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -190,7 +190,7 @@ const AuthForm: React.FC = () => {
         toast.success("Registration successful!");
         setUserData(userData.user, userData.token);
         setIsSigningUp(false);
-        router.push("/questions");
+        router.push("/achieve");
       } else {
         const errorData = await res.json();
         toast.error(errorData.error || "Registration failed");
@@ -229,14 +229,14 @@ const AuthForm: React.FC = () => {
         const data = await response.json();
 
         // Store user data and token in cookies
-        setCookie("token", data.token, 7); // Set cookie for 7 days
+        setCookie("token", data.token, 7); 
         setCookie("user", JSON.stringify(data.user), 7); // Set cookie for 7 days
 
         toast.success("Login successful!");
 
         setUserData(data.user, data.token);
 
-        router.push("/profile");
+        router.push("/achieve");
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Login failed. Please try again.");
@@ -269,7 +269,7 @@ const AuthForm: React.FC = () => {
     }
   }, [session]);
 
-  const sendOTPforlogin = async () => {
+  const sendOTPforlogin = useCallback( async () => {
     try {
       const response = await fetch("/api/auth/send-otp", {
         method: "POST",
@@ -281,14 +281,15 @@ const AuthForm: React.FC = () => {
 
       if (response.ok) {
         setOtpSent(true);
-        // Display a success message using Sonner or any other method
+        toast.success("OTP sent successfully!");
       } else {
-        // Handle errors, show an error message
+        
       }
     } catch (error) {
+      toast.error("Failed to send OTP");
       console.error("Error sending OTP:", error);
     }
-  };
+  }, [credentials.email]);
 
   const verifyOTPforlogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -589,12 +590,12 @@ const AuthForm: React.FC = () => {
                     onChange={handleCredentialsChange}
                   />
 
-                  <button
+                  <div
                     onClick={() => setIsOtpLogin(!isOtpLogin)}
                     className="text-primary text-left font-semibold px-4"
                   >
                     {isOtpLogin ? "Login with Password" : "Login via OTP"}
-                  </button>
+                  </div>
                 </div>
 
                 {isOtpLogin ? (

@@ -34,7 +34,7 @@ interface PDFViewerProps {
 
 const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
   const { userData } = useUserStore();
-  const { extractedText, structuredData, resumeFile } = useInterviewStore();
+  const { extractedText, resumeFile, structuredData } = useInterviewStore();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const textLayerRef = useRef<HTMLDivElement>(null);
 
@@ -534,8 +534,11 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
         const page = await pdf.getPage(1);
         const viewport = page.getViewport({ scale: 1 });
 
+        const viewport = page.getViewport({ scale: 1 });
+
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d");
+
 
         canvas.height = viewport.height;
         canvas.width = viewport.width;
@@ -549,6 +552,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
 
         if (textLayerRef.current) {
           textLayerRef.current.innerHTML = "";
+
 
           const textContent = await page.getTextContent();
           textLayerRef.current.style.width = `${canvas.offsetWidth}px`;
@@ -564,6 +568,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
           setIsTextLayerReady(true);
         }
       } catch (error) {
+        console.error("Error rendering PDF:", error);
         console.error("Error rendering PDF:", error);
       }
     } else {
@@ -592,7 +597,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
   );
 
   useEffect(() => {
-    if (resumeFile && !isRendered) {
+    if (resumeFile) {
       const timer = setTimeout(() => {
         if (canvasRef.current) {
           renderPDF(); // Render the PDF using the resumeFile from interviewStore

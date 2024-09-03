@@ -10,7 +10,6 @@ import {
   ResourcesComponent,
   CompanyComponent,
 } from "./HomeNavbarComponents";
-// import { useRouter } from "next/navigation";
 
 const HomeNavbar = () => {
   const { data: session } = useSession();
