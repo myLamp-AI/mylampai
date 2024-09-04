@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     response.headers.append(
       "Set-Cookie",
-      "token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax; Secure;"
+      "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
     );
 
     return response;

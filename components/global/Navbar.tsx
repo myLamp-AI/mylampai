@@ -61,8 +61,11 @@ const Navbar = () => {
   useEffect(() => {
     if (session && !token) {
       getToken();
+    } else if (!session && !token) {
+      clearUser();
+      router.push("/login");
     }
-  }, [session]);
+  }, [session, token]);
 
   const handleToast = (message: string) => {
     toast.success(message);
