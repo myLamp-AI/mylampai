@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -190,7 +190,7 @@ const AuthForm: React.FC = () => {
         toast.success("Registration successful!");
         setUserData(userData.user, userData.token);
         setIsSigningUp(false);
-        router.push("/questions");
+        router.push("/achieve");
       } else {
         const errorData = await res.json();
         toast.error(errorData.error || "Registration failed");
@@ -229,14 +229,14 @@ const AuthForm: React.FC = () => {
         const data = await response.json();
 
         // Store user data and token in cookies
-        setCookie("token", data.token, 7); // Set cookie for 7 days
+        setCookie("token", data.token, 7); 
         setCookie("user", JSON.stringify(data.user), 7); // Set cookie for 7 days
 
         toast.success("Login successful!");
 
         setUserData(data.user, data.token);
 
-        router.push("/profile");
+        router.push("/achieve");
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Login failed. Please try again.");
@@ -263,13 +263,13 @@ const AuthForm: React.FC = () => {
 
   useEffect(() => {
     if (session?.user || userData) {
-      router.push("/");
+      router.push("/achieve");
     } else {
       clearUser();
     }
   }, [session]);
 
-  const sendOTPforlogin = async () => {
+  const sendOTPforlogin = useCallback( async () => {
     try {
       const response = await fetch("/api/auth/send-otp", {
         method: "POST",
@@ -281,14 +281,15 @@ const AuthForm: React.FC = () => {
 
       if (response.ok) {
         setOtpSent(true);
-        // Display a success message using Sonner or any other method
+        toast.success("OTP sent successfully!");
       } else {
-        // Handle errors, show an error message
+        
       }
     } catch (error) {
+      toast.error("Failed to send OTP");
       console.error("Error sending OTP:", error);
     }
-  };
+  }, [credentials.email]);
 
   const verifyOTPforlogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -351,7 +352,7 @@ const AuthForm: React.FC = () => {
 
   return (
     <div className="bg-primary-foreground flex flex-col items-center justify-center md:h-screen relative p-4 md:p-0 h-screen">
-      <div className="absolute top-4 left-0 max-w-32">
+      <div className="absolute top-2 left-0 max-w-[220px]">
         <Link href="/">
         <Image
           src={"/home/logo.svg"}
@@ -372,9 +373,9 @@ const AuthForm: React.FC = () => {
             interval={5000}
             showArrows={false}
             showIndicators={false}
-            className="w-full  md:h-full flex flex-col justify-between"
+            className="w-full  md:h-full flex flex-col pt-4 justify-between"
           >
-            <div className="flex justify-center items-center h-full">
+            <div className="flex justify-center p-4 items-center h-full">
               <Image
                 src={"/images/Globe.svg"}
                 alt="Carousel Image 1"
@@ -383,7 +384,7 @@ const AuthForm: React.FC = () => {
                 height={100}
               />
             </div>
-            <div className="flex justify-center items-center h-full">
+            <div className="flex justify-center p-4 items-center h-full">
               <Image
                 src={"/images/Globe.svg"}
                 alt="Carousel Image 1"
@@ -589,12 +590,12 @@ const AuthForm: React.FC = () => {
                     onChange={handleCredentialsChange}
                   />
 
-                  <button
+                  <div
                     onClick={() => setIsOtpLogin(!isOtpLogin)}
                     className="text-primary text-left font-semibold px-4"
                   >
                     {isOtpLogin ? "Login with Password" : "Login via OTP"}
-                  </button>
+                  </div>
                 </div>
 
                 {isOtpLogin ? (

@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "../globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const openSans = Open_Sans({ subsets: ["latin"], display: "swap" });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${openSans.className} h-full overflow-hidden`}>
+        <GoogleAnalytics gaId="G-3TPKSH7MPS" />
         <main className="h-full">
           <AuthProvider>{children}</AuthProvider>
           <Toaster position="top-center" />

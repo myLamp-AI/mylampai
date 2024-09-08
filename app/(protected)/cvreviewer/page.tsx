@@ -6,14 +6,14 @@ import PDFViewer from "./StepThree";
 import { useUserStore } from "@/utils/userStore";
 import { toast } from "sonner";
 
-const baseUrl = "https://ai-cv-review-b6ddhshaecbkcfau.centralindia-01.azurewebsites.net";
+const baseUrl =
+  "https://ai-cv-review-b6ddhshaecbkcfau.centralindia-01.azurewebsites.net";
 
 const Page: React.FC = () => {
   const {
     setResumeFile,
     setJobDescriptionFile,
-    resumeFile,
-    jobDescriptionFile,
+    resumeFile
   } = useInterviewStore();
   const [step, setStep] = useState(1);
   const [isManualEntry, setIsManualEntry] = useState(false);
@@ -22,21 +22,6 @@ const Page: React.FC = () => {
   const { token } = useUserStore();
   const [profile, setProfile] = useState<string | null>(null);
   const [localResume, setLocalResume] = useState<File | null>(null);
-
-  const handleDrop = async (
-    event: DragEvent<HTMLDivElement>,
-    setFile: (file: File) => void,
-  ) => {
-    event.preventDefault();
-    const files = event.dataTransfer?.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-      setFile(file);
-      setLocalResume(file);
-      const fileBinary = await getBinaryData(file);
-      uploadCVAndJobDescription(fileBinary, manualJobDescription);
-    }
-  };
 
   const handleResumeUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -51,16 +36,13 @@ const Page: React.FC = () => {
 
   const triggerFileInput = (inputId: string) => {
     const inputElement = document.getElementById(
-      inputId,
+      inputId
     ) as HTMLInputElement | null;
     if (inputElement) {
       inputElement.click();
     }
   };
 
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
 
   const handleNextClick = () => {
     setStep((prevStep) => prevStep + 1);
@@ -71,7 +53,7 @@ const Page: React.FC = () => {
   };
 
   const handleJobDescriptionUpload = async (
-    event: ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target?.files?.[0];
     if (file) {
@@ -134,7 +116,7 @@ const Page: React.FC = () => {
 
   const uploadCVAndJobDescription = async (
     resumeFileBinary: ArrayBuffer,
-    jobDescriptionText: string,
+    jobDescriptionText: string
   ) => {
     try {
       if (!token) {
@@ -176,11 +158,8 @@ const Page: React.FC = () => {
       {step === 1 || step === 2 ? (
         <StepOneTwo
           step={step}
-          setStep={setStep}
-          handleDrop={handleDrop}
           handleResumeUpload={handleResumeUpload}
           triggerFileInput={triggerFileInput}
-          handleDragOver={handleDragOver}
           handleNextClick={handleNextClick}
           handleBackClick={handleBackClick}
           handleJobDescriptionUpload={handleJobDescriptionUpload}
@@ -190,8 +169,8 @@ const Page: React.FC = () => {
           isManualEntry={isManualEntry}
           manualJobDescription={manualJobDescription}
           setManualJobDescription={setManualJobDescription}
-          profile={profile} // Pass the profile
-          setProfile={setProfile} // Pass the setProfile function
+          profile={profile} 
+          setProfile={setProfile} 
         />
       ) : (
         <PDFViewer

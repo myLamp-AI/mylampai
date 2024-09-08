@@ -10,7 +10,6 @@ import {
   ResourcesComponent,
   CompanyComponent,
 } from "./HomeNavbarComponents";
-// import { useRouter } from "next/navigation";
 
 const HomeNavbar = () => {
   const { data: session } = useSession();
@@ -101,7 +100,7 @@ const HomeNavbar = () => {
     <div
       className={`flex justify-between items-center gap-4 ${
         !scroll ? "bg-primary-foreground" : "bg-[#ffffff20]"
-      } backdrop-blur-sm transition px-8 sticky top-0 w-full z-50 min-h-[64px]`}
+      } backdrop-blur-sm transition pr-8 sticky top-0 w-full z-50 min-h-[64px]`}
     >
       <Link
         href={"/"}
