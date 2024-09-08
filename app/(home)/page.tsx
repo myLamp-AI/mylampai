@@ -47,7 +47,6 @@ const SectionWrapper = ({ children }: {
 
 export default function Page() {
   useEffect(() => {
-    document.title = "MyLampAi - Home";
     window.scrollTo(0, 0);
   }, []);
 

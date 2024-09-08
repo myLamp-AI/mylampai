@@ -2,6 +2,7 @@
 import React, { useState, DragEvent, ChangeEvent } from "react";
 import StepOneTwo from "./StepOneTwo"; // Adjust the path if necessary
 import { useInterviewStore } from "@/utils/store";
+import type { Metadata } from "next";
 import PDFViewer from "./StepThree";
 import { useUserStore } from "@/utils/userStore";
 import { toast } from "sonner";

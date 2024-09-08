@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 import { useUserStore } from "@/utils/userStore";
 
 import {
@@ -97,56 +98,68 @@ const HomeNavbar = () => {
   }, [userData, session]);
 
   return (
-    <div
-      className={`flex justify-between items-center gap-4 ${
-        !scroll ? "bg-primary-foreground" : "bg-[#ffffff20]"
-      } backdrop-blur-sm transition pr-8 sticky top-0 w-full z-50 min-h-[64px]`}
-    >
-      <Link
-        href={"/"}
-        className="grid place-items-center max-w-[220px] w-full"
+    <>
+      <div
+        className={`flex justify-between items-center gap-4 ${
+          !scroll ? "bg-primary-foreground" : "bg-[#ffffff20]"
+        } backdrop-blur-sm transition pr-8 sticky top-0 w-full z-50 min-h-[64px]`}
       >
-        <Image
-          src={"/home/logo.svg"}
-          height={100}
-          width={180}
-          alt="logo"
-          className="w-full h-auto drop-shadow-md"
-        />
-      </Link>
-      <div className="md:flex hidden justify-between bg-[#ffffff90] items-center w-full max-w-[600px] gap-1 pr-2 my-2 pl-4 py-2 min-h-[40px] backdrop-blur-md font-medium rounded-full shadow-sm">
         <Link
           href={"/"}
-          className="transition-all py-2 px-4 rounded-full duration-300 hover:bg-primary-foreground "
+          className="grid place-items-center max-w-[220px] w-full"
         >
-          Home
+          <Image
+            src={"/home/logo.svg"}
+            height={100}
+            width={180}
+            alt="logo"
+            className="w-full h-auto drop-shadow-md"
+          />
         </Link>
-
-        <CommunityComponent />
-
-        <ResourcesComponent />
-
-        <CompanyComponent />
-
-        {userData || session ? (
+        <div className="md:flex hidden justify-between bg-[#ffffff90] items-center w-full max-w-[600px] gap-1 pr-2 my-2 pl-4 py-2 min-h-[40px] backdrop-blur-md font-medium rounded-full shadow-sm">
           <Link
-            href={"/profile"}
-            className="flex items-center bg-primary text-white pl-4 pr-2 py-2 gap-2 rounded-full md:shadow transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105"
+            href={"/"}
+            className="transition-all py-2 px-4 rounded-full duration-300 hover:bg-primary-foreground "
           >
-            {initials}
-            <Image src={"/home/userNavbar.svg"} alt="" height={25} width={25} />
+            Home
           </Link>
-        ) : (
-          <Link
-            href={"/login"}
-            className="flex items-center bg-primary text-white pl-4 pr-2 py-2 gap-2 rounded-full md:shadow transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105"
-          >
-            Sign In
-            <Image src={"/home/userNavbar.svg"} alt="" height={25} width={25} />
-          </Link>
-        )}
+
+          <CommunityComponent />
+
+          <ResourcesComponent />
+
+          <CompanyComponent />
+
+          {userData || session ? (
+            <Link
+              href={"/profile"}
+              className="flex items-center bg-primary text-white pl-4 pr-2 py-2 gap-2 rounded-full md:shadow transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105"
+            >
+              {initials}
+              <Image
+                src={"/home/userNavbar.svg"}
+                alt=""
+                height={25}
+                width={25}
+              />
+            </Link>
+          ) : (
+            <Link
+              href={"/login"}
+              className="flex items-center bg-primary text-white pl-4 pr-2 py-2 gap-2 rounded-full md:shadow transition-all duration-300 hover:shadow-lg hover:transform hover:scale-105"
+            >
+              Sign In
+              <Image
+                src={"/home/userNavbar.svg"}
+                alt=""
+                height={25}
+                width={25}
+              />
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
