@@ -45,31 +45,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ profile }) => {
     []
   );
 
-
-  // const fetchResumeFromLocalStorage = () => {
-  //   try {
-  //     const base64Data = localStorage.getItem("resumeFile");
-  //     if (base64Data) {
-  //       const byteString = atob(base64Data.split(',')[1]); // Decode base64 to binary string
-  //       const uint8Array = new Uint8Array(byteString.length);
-  //       for (let i = 0; i < byteString.length; i++) {
-  //         uint8Array[i] = byteString.charCodeAt(i);
-  //       }
-  //       setResumeFile(uint8Array);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching resume from local storage:", error);
-  //   } finally {
-  //     // setLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchResumeFromLocalStorage();
-  // }, []);
-
-
-
   const analyzeResume = async (endpoint: string, data: any, query: string) => {
     try {
       const response = await fetch(`${baseUrl}${endpoint}${query}`, {
