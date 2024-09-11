@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useUserStore } from "@/utils/userStore";
-
 import {
   CommunityComponent,
   ResourcesComponent,
@@ -17,13 +16,13 @@ const HomeNavbar = () => {
   const { userData, token, setUserData } = useUserStore();
   const [initials, setInitials] = useState("Profile");
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (window.scrollY > 80) {
       setScroll(true);
     } else {
       setScroll(false);
     }
-  };
+  }, []);
 
   const getToken = useCallback(async () => {
     try {
@@ -102,10 +101,7 @@ const HomeNavbar = () => {
         !scroll ? "bg-primary-foreground" : "bg-[#ffffff20]"
       } backdrop-blur-sm transition pr-8 sticky top-0 w-full z-50 min-h-[64px]`}
     >
-      <Link
-        href={"/"}
-        className="grid place-items-center max-w-[220px] w-full"
-      >
+      <Link href={"/"} className="grid place-items-center max-w-[220px] w-full">
         <Image
           src={"/home/logo.svg"}
           height={100}

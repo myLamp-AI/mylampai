@@ -28,7 +28,6 @@ export default function WizeCamp() {
           <button onClick={toggleContact} className="relative text-white font-bold top-[30vh] p-4 border-x-primary-foreground border-4 rounded-xl bg-primary">
             CLOSE FORM
           </button>
-
         </div>
       </div>
 

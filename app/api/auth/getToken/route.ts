@@ -5,10 +5,18 @@ import jwt from "jsonwebtoken";
 export const POST = async (req: NextRequest) => {
   try {
     const { email } = await req.json();
+
+    if (!email) {
+      return NextResponse.json(
+        { message: "Unauthorized" },
+        { status: 401 },
+      );
+    }
+
     const user = await prisma.user.findFirst({
       where: { email },
     });
-
+    
     if (!user) {
       return NextResponse.json(
         { message: "Invalid email or password" },

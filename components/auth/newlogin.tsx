@@ -136,7 +136,7 @@ const AuthForm: React.FC = () => {
     }
     setIsOTPVerifing(false);
   };
-
+  ``
   const handleSubmitSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -168,6 +168,7 @@ const AuthForm: React.FC = () => {
     }
 
     setIsSigningUp(true);
+    
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
@@ -250,7 +251,7 @@ const AuthForm: React.FC = () => {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signIn("google");
-      if (result?.ok) router.push("/achieve");
+      if (result?.ok) router.push("/");
       if (result?.error) {
         console.error("Google sign-in error:", result.error);
         toast.error("Google sign-in failed. Please try again.");
@@ -262,12 +263,14 @@ const AuthForm: React.FC = () => {
   };
 
   useEffect(() => {
-    if (session?.user || userData) {
-      router.push("/achieve");
+    if (session?.user) {
+      router.push("/");
+    } else if (userData) {
+      router.push("/achieve")
     } else {
       clearUser();
     }
-  }, [session]);
+  }, [session, userData]);
 
   const sendOTPforlogin = useCallback( async () => {
     try {
