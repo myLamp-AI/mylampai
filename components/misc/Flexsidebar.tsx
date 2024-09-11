@@ -58,8 +58,7 @@ export default function Flexsidebar() {
           ☰
         </button>
         <div className="w-full h-[70vh] flex flex-col justify-evenly mb-0 overflow-y-auto scrollbar-hide ">
-          {navRender.map((item, index) => {
-            const isActive = pathname === navData[index].Link;
+          {navRender.map((_, index) => {
             return (
               <NavLinks
                 name={navData[index].name}

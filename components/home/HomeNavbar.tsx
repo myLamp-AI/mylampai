@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
-import Head from "next/head";
 import { useUserStore } from "@/utils/userStore";
 import {
   CommunityComponent,

@@ -330,7 +330,6 @@ const AuthForm: React.FC = () => {
   };
 
   const handleForgotPassword = async () => {
-    console.log("HandleForgot password");
     try {
       const response = await fetch("/api/forgot", {
         method: "POST",
@@ -340,14 +339,13 @@ const AuthForm: React.FC = () => {
         body: JSON.stringify({ email: credentials.email, }),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        toast.success("Email Sent Successfully to your email for Resetting the Password.");
+        toast.success("Email sent successfully!");
       } else {
-        toast.success("Email not sent ");
+        toast.error("Failed to send email");
       }
     } catch (error) {
+      toast.error("Failed to send password reset request");
       console.error("Error sending password reset request:", error);
     }
   };
@@ -518,12 +516,12 @@ const AuthForm: React.FC = () => {
                 <div className="flex justify-between items-center mt-16 ">
                   <div className="text-gray-500 font-semibold">
                     <span className="text-sm">Already have an account? </span>{" "}
-                    <button
+                    <div
                       onClick={() => setIsSignUp(false)}
                       className="text-primary font-semibold"
                     >
                       Sign In
-                    </button>
+                    </div>
                   </div>
                   <div className="flex space-x-6 mb-1">
                     <button
@@ -611,13 +609,6 @@ const AuthForm: React.FC = () => {
                       autoComplete="off"
                       className="w-full px-2 py-3 border-1 bg-white outline-none rounded-md text-black placeholder:text-gray-400 placeholder:font-semibold placeholder:text-l focus:border-primary-foreground focus:font-semibold  hover:border-primary-foreground transition-all duration-300"
                     />
-                    {/* <div className="flex items-center mt-3 ml-[-10px]"> */}
-                    {/* <Image
-                        src={Lock}
-                        alt="Image beside Forgot password"
-                        className="ml-2 w-3 h-3"
-
-                      /> */}
                     <button className="font-semibold text-left text-primary px-4 absolute bottom-0 translate-y-full ">
                       Didn&apos;t Receive OTP yet?
                     </button>
@@ -652,12 +643,12 @@ const AuthForm: React.FC = () => {
                     <span className="text-sm">
                       Don&apos;t have an account? &nbsp;
                     </span>{" "}
-                    <button
+                    <div
                       onClick={() => setIsSignUp(true)}
                       className="text-primary font-semibold"
                     >
                       Register
-                    </button>
+                    </div>
                   </div>
                   <button
                     type="submit"
