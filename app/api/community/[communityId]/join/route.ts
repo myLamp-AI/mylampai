@@ -1,5 +1,3 @@
-// app/api/community/[communityId]/join/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../../../../../lib'; // Adjust the path as per your project structure
 import jwt from 'jsonwebtoken';

@@ -27,8 +27,8 @@ export const POST = async (req: NextRequest) => {
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    const token = authHeader.substring(7); 
-    
+    const token = authHeader.substring(7);
+
     let decodedToken: any;
     try {
       decodedToken = jwt.verify(token, process.env.JWT_SECRET || 'okokokok');
@@ -44,7 +44,7 @@ export const POST = async (req: NextRequest) => {
     }
 
     const { name, description, comm_type }: CommunityRequest = await req.json();
-    
+
     if (!name) {
       return NextResponse.json({ error: 'Name is required' }, { status: 422 });
     }
@@ -56,9 +56,9 @@ export const POST = async (req: NextRequest) => {
     if (existingCommunity) {
       return NextResponse.json({ error: 'Community already exists' }, { status: 422 });
     }
-    
+
     if (!comm_type) {
-      return NextResponse.json({error: 'Community type ("normal" or "exclusive") is required'}, {status: 422})
+      return NextResponse.json({ error: 'Community type ("normal" or "exclusive") is required' }, { status: 422 })
     }
 
     const createdCommunity = await prisma.community.create({
@@ -73,5 +73,5 @@ export const POST = async (req: NextRequest) => {
   } catch (error) {
     console.error('Error creating community:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  } 
+  }
 };
