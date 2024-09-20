@@ -14,10 +14,12 @@ import { setCookie } from "@/utils/cookieUtils";
 import { useUserStore } from "@/utils/userStore";
 
 const AuthForm: React.FC = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const { userData, setUserData, clearUser } = useUserStore();
   const [isSignUp, setIsSignUp] = useState(false);
   const [isOTPVerifing, setIsOTPVerifing] = useState(false);
+
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -37,7 +39,6 @@ const AuthForm: React.FC = () => {
   });
   const [isOtpLogin, setIsOtpLogin] = useState(false);
 
-  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -9,12 +9,15 @@ import {
   ResourcesComponent,
   CompanyComponent,
 } from "./HomeNavbarComponents";
+import Cookies from "js-cookie"
 
 const HomeNavbar = () => {
   const { data: session } = useSession();
   const [scroll, setScroll] = useState(false);
-  const { userData, token, setUserData } = useUserStore();
+  const { userData, setUserData } = useUserStore();
   const [initials, setInitials] = useState("Profile");
+
+  const [hasToken, setHasToken] = useState(true);
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 80) {
@@ -44,10 +47,15 @@ const HomeNavbar = () => {
   }, [session]);
 
   useEffect(() => {
-    if (session && !token) {
+    if (session?.user && !hasToken) {
       getToken();
     }
-  }, [session]);
+  }, [session, hasToken]);
+
+  useEffect(() => {
+    const cookieExists = Cookies.get('token') !== undefined;
+    setHasToken(cookieExists);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -98,9 +106,8 @@ const HomeNavbar = () => {
   return (
     <>
       <div
-        className={`flex justify-between items-center gap-4 ${
-          !scroll ? "bg-primary-foreground" : "bg-[#ffffff20]"
-        } backdrop-blur-sm transition pr-8 sticky top-0 w-full z-50 min-h-[64px]`}
+        className={`flex justify-between items-center gap-4 ${!scroll ? "bg-primary-foreground" : "bg-[#ffffff20]"
+          } backdrop-blur-sm transition pr-8 sticky top-0 w-full z-50 min-h-[64px]`}
       >
         <Link
           href={"/"}
