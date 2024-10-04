@@ -14,11 +14,12 @@ import { setCookie } from "@/utils/cookieUtils";
 import { useUserStore } from "@/utils/userStore";
 
 const AuthForm: React.FC = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const { userData, setUserData, clearUser } = useUserStore();
   const [isSignUp, setIsSignUp] = useState(false);
-  const [isSigningUp, setIsSigningUp] = useState(false);
   const [isOTPVerifing, setIsOTPVerifing] = useState(false);
+
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -38,7 +39,6 @@ const AuthForm: React.FC = () => {
   });
   const [isOtpLogin, setIsOtpLogin] = useState(false);
 
-  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -166,8 +166,6 @@ const AuthForm: React.FC = () => {
       toast.error("Please agree to the terms and conditions.");
       return;
     }
-
-    setIsSigningUp(true);
     
     try {
       const res = await fetch("/api/auth/register", {
@@ -190,7 +188,6 @@ const AuthForm: React.FC = () => {
         setCookie("user", JSON.stringify(userData.user), 7); // Set cookie for 7 days
         toast.success("Registration successful!");
         setUserData(userData.user, userData.token);
-        setIsSigningUp(false);
         router.push("/achieve");
       } else {
         const errorData = await res.json();
@@ -200,7 +197,6 @@ const AuthForm: React.FC = () => {
       console.error("Register error:", error);
       toast.error("An error occurred during registration");
     }
-    setIsSigningUp(false);
   };
 
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {

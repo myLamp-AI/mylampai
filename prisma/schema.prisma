@@ -181,21 +181,23 @@ model Directmessage {
 }
 
 model Blog {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
   authorName  String
   position    String
-  sections    Section[]
-  image       String
+  readtime    String
+  createdAt   DateTime @default(now())
+  sections    Json[]   // This will store an array of section objects
+  tags        String[]
+  source      String
 }
-
 model Section {
   id         String @id @default(auto()) @map("_id") @db.ObjectId
   blogId     String @db.ObjectId
   subheading String
   content    String
-  blog       Blog   @relation(fields: [blogId], references: [id])
+  imageUrl   String?
 }
 
 model NewsletterEmails {
