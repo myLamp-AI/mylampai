@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, DragEvent, ChangeEvent } from "react";
-import StepOneTwo from "./StepOneTwo"; // Adjust the path if necessary
+import React, { useState, ChangeEvent } from "react";
+import StepOneTwo from "./StepOneTwo"; 
+import StepThree from "./StepThree";
 import { useInterviewStore } from "@/utils/store";
-import type { Metadata } from "next";
-import PDFViewer from "./StepThree";
 import { useUserStore } from "@/utils/userStore";
 import { toast } from "sonner";
 
@@ -174,7 +173,7 @@ const Page: React.FC = () => {
           setProfile={setProfile} 
         />
       ) : (
-        <PDFViewer
+        <StepThree
           profile={profile}
           structuredData={structuredData}
           localResume={localResume}
