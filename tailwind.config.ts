@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       wordSpacing: {
-        wide: "10px", // Customize as needed
+        wide: "10px",
         wider: "20px",
         widest: "30px",
       },
