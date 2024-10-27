@@ -9,6 +9,7 @@ export const GET = async (req: NextRequest) => {
         sections: true,
       },
     });
+
     return NextResponse.json({ message: "Success", posts }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ message: "Error", err }, { status: 500 });
@@ -17,53 +18,52 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: NextRequest) => {
   try {
-    const authHeader = req.headers.get("authorization");
+    // const authHeader = req.headers.get("authorization");
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return NextResponse.json(
-        { message: "Unauthorized: Missing token" },
-        { status: 401 }
-      );
-    }
-    const token = authHeader.split(" ")[1];
-    const {
-      title,
-      description,
-      authorName,
-      position,
-      readtime,
-      sections,
-      tags,
-    } = await req.json();
+    // if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    //   return NextResponse.json(
+    //     { message: "Unauthorized: Missing token" },
+    //     { status: 401 }
+    //   );
 
-    const decodedToken = jwt.verify(
-      token,
-      process.env.JWT_SECRET as string
-    ) as { role: string };
+    // }
+    // const token = authHeader.split(" ")[1];
+    // const {
+    //   title,
+    //   description,
+    //   authorName,
+    //   position,
+    //   readtime,
+    //   sections,
+    //   tags,
+    // } = await req.json();
 
-    if (decodedToken.role !== "admin") {
-      return NextResponse.json(
-        { message: "Unauthorized: Insufficient privileges" },
-        { status: 403 }
-      );
-    }
+    const formData = await req.json()
+
+
+    console.log(formData.sections)
+
+    // const decodedToken = jwt.verify(
+    //   token,
+    //   process.env.JWT_SECRET as string
+    // ) as { role: string };
+
+    // if (decodedToken.role !== "admin") {
+    //   return NextResponse.json(
+    //     { message: "Unauthorized: Insufficient privileges" },
+    //     { status: 403 }
+    //   );
+    // }
 
     await prisma.blog.create({
       data: {
-        title,
-        description,
-        authorName,
-        position,
-        readtime,
-        tags,
+        ...formData,
         sections: {
-          create: sections.map((section: any) => ({
-            subheading: section.subheading,
-            content: section.content,
-          })),
-        },
-      },
+          create: formData.sections
+        }
+      }
     });
+
 
     return NextResponse.json({ message: "Blog created successfully", isCreated: true }, { status: 201 });
   } catch (err) {

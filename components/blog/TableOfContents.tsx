@@ -72,7 +72,7 @@ export default function TableOfContents({
     <nav className="mb-8">
       <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
       <ul className="space-y-2">
-        {sections.map((section, index) => {
+        {sections?.map((section, index) => {
           const sectionId = section.subheading
             .toLowerCase()
             .replace(/\s+/g, "-");

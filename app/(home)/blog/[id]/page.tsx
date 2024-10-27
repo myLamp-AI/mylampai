@@ -191,9 +191,13 @@ export default function BlogPost() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`/api/blog/${id}`);
+        const response = await fetch(`/api/blog/${id}`, {
+          method: "GET"
+        });
         if (response.ok) {
           const data = await response.json();
+          console.log(data)
+          
           setBlog(data);
         } else {
           console.error("Failed to fetch blog post");
@@ -270,7 +274,7 @@ export default function BlogPost() {
           </aside>
 
           <article className="md:col-span-12 lg:col-span-6">
-            {blog.sections.map((section, index) => (
+            {blog.sections?.map((section, index) => (
               <div key={index}>
                 <h2
                   id={section.subheading.toLowerCase().replace(/\s+/g, "-")}
@@ -291,7 +295,7 @@ export default function BlogPost() {
               </div>
             ))}
 
-            <p className="mb-6 text-lg">Source: {blog.source}</p>
+            {/* <p className="mb-6 text-lg">Source: {blog.source}</p> */}
             <RelatedArticles />
             <TopTutorials />
           </article>

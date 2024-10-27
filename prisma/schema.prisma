@@ -181,24 +181,27 @@ model Directmessage {
 }
 
 model Blog {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
   authorName  String
   position    String
   readtime    String
-  createdAt   DateTime @default(now())
-  sections    Json[]   // This will store an array of section objects
+  createdAt   DateTime  @default(now())
+  sections    Section[] @relation("BlogSections")
   tags        String[]
-  source      String
 }
+
 model Section {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  blogId     String @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  blogId     String   @db.ObjectId
   subheading String
   content    String
   imageUrl   String?
+
+  blog       Blog     @relation("BlogSections", fields: [blogId], references: [id], onDelete: Cascade) 
 }
+
 
 model NewsletterEmails {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
