@@ -191,14 +191,14 @@ export default function BlogPost() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`/api/blog/${id}`, {
+        const response = await fetch(`/api/blogs/${id}`, {
           method: "GET"
         });
         if (response.ok) {
           const data = await response.json();
           console.log(data)
           
-          setBlog(data);
+          setBlog(data.blog);
         } else {
           console.error("Failed to fetch blog post");
         }

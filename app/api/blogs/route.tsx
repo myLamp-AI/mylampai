@@ -64,7 +64,6 @@ export const POST = async (req: NextRequest) => {
       }
     });
 
-
     return NextResponse.json({ message: "Blog created successfully", isCreated: true }, { status: 201 });
   } catch (err) {
     console.log(err);

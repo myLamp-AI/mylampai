@@ -25,6 +25,8 @@ export default function BlogHeader({
   createdAt,
   tags,
 }: BlogHeaderProps) {
+  
+
   return (
     <div className="bg-black text-white w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -43,18 +45,13 @@ export default function BlogHeader({
         {/* Main Content */}
         <div className="grid md:grid-cols-2 gap-8 items-start mt-16">
           <div>
-            <Button
+            {tags.map((tag, index) => <Button
+              key={index}
               variant="outline"
               className="mb-4 bg-red-100 text-red-600 border-red-600 hover:bg-red-200"
             >
-              {tags[0]}
-            </Button>
-            <Button
-              variant="outline"
-              className="mb-4 bg-red-100 text-red-600 border-red-600 hover:bg-red-200"
-            >
-              {tags[1]}
-            </Button>
+              {tag}
+            </Button>)}
             <h1 className="text-5xl font-bold mb-4 leading-tight">{title}</h1>
             <div className="mb-4 text-gray-400">
               <p>Last Updated: {new Date(createdAt).toLocaleDateString()}</p>
