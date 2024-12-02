@@ -31,8 +31,32 @@ const Page: React.FC = () => {
       const resumeFileBinary = await getBinaryData(file); // Convert resume to binary
       uploadCVAndJobDescription(resumeFileBinary, manualJobDescription);
     }
+    uploadfile(resumeFile);
+    
   };
-
+  const uploadfile=async(file:File)=>{
+    try {
+      const reader=new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload=async()=>{
+        const base64file=reader.result?.toString().split(",")[1];
+        const response=await fetch("/api/uploadblob",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({file:{name:file.name,data:base64file}}),
+        })
+        const result=await response.json();
+        if(response.ok){
+           console.log("upload sucess",result);
+        }else{
+          console.error("upload error",result.error);
+        }
+      }
+     
+    } catch (error) {
+      console.error("error uploading file",error);
+    }
+  }
   const triggerFileInput = (inputId: string) => {
     const inputElement = document.getElementById(
       inputId,

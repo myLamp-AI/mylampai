@@ -3,12 +3,15 @@ import {
   StorageSharedKeyCredential,
   generateBlobSASQueryParameters,
   BlobSASPermissions,
+  BlobServiceClient,
 } from "@azure/storage-blob";
 
 const accountName = process.env.AZURE_ACCOUNT_NAME || "";
 const accountKey = process.env.AZURE_ACCOUNT_KEY || "";
 const containerName = process.env.AZURE_CONTAINER_NAME || "";
 const interviewContainerName = process.env.AZURE_INTERVIEW_CONTAINER_NAME || "";
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING||"";
+const blobname=process.env.AZURE_BLOB_NAME||"";
 
 const sharedKeyCredential = new StorageSharedKeyCredential(
   accountName,
@@ -58,5 +61,19 @@ export const generateSasUrlForInterview = async () => {
   } catch (error) {
     console.error("Error generating SAS token:", error);
     return null;
+  }
+};
+export const blobstorage = async (data: File) => {
+  try {
+    const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobname);
+
+    const uploadBlobResponse = await blockBlobClient.uploadBrowserData(data);
+
+    return uploadBlobResponse;
+  } catch (error) {
+    console.error("Error uploading blob:", error);
+    throw error;
   }
 };
