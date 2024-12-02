@@ -60,11 +60,16 @@ const StepOneTwo: React.FC<StepOneTwoProps> = ({
     event.preventDefault();
   };
 
-  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+  const handleDrop =async (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
-
     setUploading(true);
+    if(!file){
+      toast.error("No file selected");
+    return;
+    }
+    await uploadfile(file);
+    
 
     if (file && file.type === "application/pdf") {
       if (file.size > 1 * 1024 * 1024) {
@@ -137,15 +142,42 @@ const StepOneTwo: React.FC<StepOneTwoProps> = ({
       setUploading(false);
     }
   };
+  const uploadfile=async(file:File)=>{
+    try {
+      const reader=new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload=async()=>{
+        const base64file=reader.result?.toString().split(",")[1];
+        const response=await fetch("/api/uploadblob",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({file:{name:file.name,data:base64file}}),
+        })
+        const result=await response.json();
+        if(response.ok){
+           console.log("upload sucess",result);
+        }else{
+          console.log("upload error",result.error);
+        }
+      }
+     
+    } catch (error) {
+      console.log("error uploading file",error);
+    }
+  }
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     event.preventDefault();
     const file = event.target.files?.[0];
-
     setUploading(true);
-
+    if(!file){
+      toast.error("No file selected");
+    return;
+    }
+    await uploadfile(file);
+   
     if (file && file.type === "application/pdf") {
       if (file.size > 1 * 1024 * 1024) {
         toast.error("File size should be less than 1MB");

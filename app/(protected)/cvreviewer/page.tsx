@@ -25,16 +25,19 @@ const Page: React.FC = () => {
   const handleResumeUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const file = event.target?.files?.[0];
+  console.log("asddas");
     if (file) {
       setResumeFile(file);
       setLocalResume(file);
-      const resumeFileBinary = await getBinaryData(file); // Convert resume to binary
-      uploadCVAndJobDescription(resumeFileBinary, manualJobDescription);
+      const resumeFileBinary = await getBinaryData(file);// Convert resume to binary
+      await uploadfile(file); 
+      uploadCVAndJobDescription(resumeFileBinary, manualJobDescription);  
     }
-    uploadfile(resumeFile);
+  
     
   };
   const uploadfile=async(file:File)=>{
+    console.log("adadas");
     try {
       const reader=new FileReader();
       reader.readAsDataURL(file);
@@ -49,12 +52,12 @@ const Page: React.FC = () => {
         if(response.ok){
            console.log("upload sucess",result);
         }else{
-          console.error("upload error",result.error);
+          console.log("upload error",result.error);
         }
       }
      
     } catch (error) {
-      console.error("error uploading file",error);
+      console.log("error uploading file",error);
     }
   }
   const triggerFileInput = (inputId: string) => {
@@ -79,6 +82,7 @@ const Page: React.FC = () => {
     event: ChangeEvent<HTMLInputElement>,
   ) => {
     const file = event.target?.files?.[0];
+    console.log("asdsaddd");
     if (file) {
       const extractedText = await extractTextFromFile(file);
       if (extractedText) {
@@ -146,12 +150,12 @@ const Page: React.FC = () => {
         toast.error("Unauthorized");
         return;
       }
-
+console.log("dasdad");
       const jobDescriptionBase64 = btoa(jobDescriptionText);
 
       // Convert binary data to a Base64 string
       const resumeBase64 = Buffer.from(resumeFileBinary).toString("base64");
-
+      
       const response = await fetch("/api/interviewer/post_cv", {
         method: "POST",
         headers: {
@@ -163,7 +167,7 @@ const Page: React.FC = () => {
           JobDescription: jobDescriptionBase64, // Sending the job description text as base64
         }),
       });
-
+    
       const result = await response.json();
 
       if (response.ok) {

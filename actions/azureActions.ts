@@ -11,7 +11,6 @@ const accountKey = process.env.AZURE_ACCOUNT_KEY || "";
 const containerName = process.env.AZURE_CONTAINER_NAME || "";
 const interviewContainerName = process.env.AZURE_INTERVIEW_CONTAINER_NAME || "";
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING||"";
-const blobname=process.env.AZURE_BLOB_NAME||"";
 
 const sharedKeyCredential = new StorageSharedKeyCredential(
   accountName,
@@ -63,17 +62,24 @@ export const generateSasUrlForInterview = async () => {
     return null;
   }
 };
-export const blobstorage = async (data: File) => {
+export const blobstorage = async (data: Buffer, fileName: string) => {
   try {
     const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
     const containerClient = blobServiceClient.getContainerClient(containerName);
-    const blockBlobClient = containerClient.getBlockBlobClient(blobname);
+    const blobName = `${Date.now()}-${fileName}`;
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
-    const uploadBlobResponse = await blockBlobClient.uploadBrowserData(data);
+    const uploadBlobResponse = await blockBlobClient.uploadData(data, {
+      blobHTTPHeaders: { blobContentType: "application/octet-stream" },
+    });
 
-    return uploadBlobResponse;
+    return {
+      blobUrl: blockBlobClient.url,
+      uploadBlobResponse,
+    };
   } catch (error) {
     console.error("Error uploading blob:", error);
     throw error;
   }
 };
+
